@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Request
 
 # Create your views here.
 
@@ -10,3 +11,7 @@ def about(request):
 
 def contact(request):
     return render(request, 'itreporting/contact.html', {'title': 'Contact'})
+
+def requests(request):
+    daily_report = {'requests': Request.objects.all(), 'title': 'Requests Made'}
+    return render(request, 'itreporting/requests.html', daily_report)
